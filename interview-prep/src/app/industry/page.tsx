@@ -1,7 +1,11 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { COMPANY_PROFILES, REAL_QUESTIONS, INDUSTRY_TOPICS } from "@/data/industryIntel";
+import { COMPANY_PROFILES, REAL_QUESTIONS as RQ1, INDUSTRY_TOPICS as IT1 } from "@/data/industryIntel";
+import { REAL_QUESTIONS_EXTRA as RQ2, INDUSTRY_TOPICS_EXTRA as IT2 } from "@/data/industryIntelExtra";
+
+const REAL_QUESTIONS = [...RQ1, ...RQ2];
+const INDUSTRY_TOPICS = [...IT1, ...IT2];
 
 type Tab = "companies" | "questions" | "topics";
 
