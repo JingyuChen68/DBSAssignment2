@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { href: "/", label: "Dashboard", icon: "🏠" },
   { href: "/lessons", label: "Lessons", icon: "📚" },
   { href: "/questions", label: "Questions", icon: "🧠" },
+  { href: "/industry", label: "Industry", icon: "🏭" },
   { href: "/career", label: "Career", icon: "🗺️" },
   { href: "/companies", label: "Companies", icon: "🏢" },
   { href: "/checklist", label: "Checklist", icon: "✅" },
@@ -36,7 +37,7 @@ export default function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  className={`flex items-center gap-1 px-2.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     isActive
                       ? "bg-violet-100 text-violet-700"
                       : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"

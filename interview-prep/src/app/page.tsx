@@ -135,6 +135,9 @@ export default function Dashboard() {
               <Link href="/career" className="flex items-center gap-3 p-3 rounded-lg bg-teal-50 text-teal-700 hover:bg-teal-100 transition font-medium text-sm">
                 <span>🗺️</span> Career Roadmap
               </Link>
+              <Link href="/industry" className="flex items-center gap-3 p-3 rounded-lg bg-orange-50 text-orange-700 hover:bg-orange-100 transition font-medium text-sm">
+                <span>🏭</span> Industry Intel
+              </Link>
               <Link href="/companies" className="flex items-center gap-3 p-3 rounded-lg bg-amber-50 text-amber-700 hover:bg-amber-100 transition font-medium text-sm">
                 <span>🏢</span> Research a Company
               </Link>
