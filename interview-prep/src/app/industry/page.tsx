@@ -3,9 +3,10 @@
 import { useState, useMemo } from "react";
 import { COMPANY_PROFILES, REAL_QUESTIONS as RQ1, INDUSTRY_TOPICS as IT1 } from "@/data/industryIntel";
 import { REAL_QUESTIONS_EXTRA as RQ2, INDUSTRY_TOPICS_EXTRA as IT2 } from "@/data/industryIntelExtra";
+import { REAL_QUESTIONS_EXTRA2 as RQ3, INDUSTRY_TOPICS_EXTRA2 as IT3 } from "@/data/industryIntelExtra2";
 
-const REAL_QUESTIONS = [...RQ1, ...RQ2];
-const INDUSTRY_TOPICS = [...IT1, ...IT2];
+const REAL_QUESTIONS = [...RQ1, ...RQ2, ...RQ3];
+const INDUSTRY_TOPICS = [...IT1, ...IT2, ...IT3];
 
 type Tab = "companies" | "questions" | "topics";
 
