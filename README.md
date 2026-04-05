@@ -11,5 +11,4 @@
 #### 2. Exercise your mental model: Pick one page in your app. Trace the path: what file renders it, what's the route, what components does it use, where does the data come from?
 
 
-#### 3. Describe one thing that happened when Claude tested your app with Playwright MCP. How did the build → verify
-loop change how you worked?
+#### 3. Describe one thing that happened when Claude tested your app with Playwright MCP. How did the build → verify loop change how you worked?

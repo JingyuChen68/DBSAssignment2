@@ -22,7 +22,9 @@ export interface Lesson {
   keyTakeaways: string[];
 }
 
-export const LESSONS: Lesson[] = [
+import { EXPANDED_LESSONS } from "./lessonsExpanded";
+
+export const CORE_LESSONS: Lesson[] = [
   {
     slug: "embedded-c-cpp",
     category: "Embedded C/C++",
@@ -1110,3 +1112,5 @@ void state_machine(void) {
     ]
   }
 ];
+
+export const LESSONS: Lesson[] = [...CORE_LESSONS, ...EXPANDED_LESSONS];
