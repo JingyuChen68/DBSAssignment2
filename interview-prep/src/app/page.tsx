@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useApp, DIFFICULTY_COLORS, STATUS_COLORS } from "@/context/AppContext";
+import { LESSONS } from "@/data/lessons";
 
 export default function Dashboard() {
   const { questions, companies, checklist } = useApp();
@@ -24,12 +25,37 @@ export default function Dashboard() {
   return (
     <div className="space-y-8">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-violet-500 via-purple-500 to-pink-500 rounded-2xl p-8 text-white">
-        <h1 className="text-3xl font-bold mb-2">Welcome to EmbedPrep ⚡</h1>
-        <p className="text-violet-100 text-lg">
-          Your embedded systems &amp; hardware interview toolkit. Track questions,
-          research companies, and stay on top of your prep.
-        </p>
+      <div className="bg-gradient-to-br from-violet-500 via-purple-500 to-pink-500 rounded-2xl p-8 text-white relative overflow-hidden">
+        <div className="relative z-10">
+          <h1 className="text-3xl font-bold mb-2">Welcome to EmbedPrep ⚡</h1>
+          <p className="text-violet-100 text-lg">
+            Your embedded systems &amp; hardware interview toolkit. Study lessons,
+            practice questions, plan your career, and ace your interviews.
+          </p>
+        </div>
+        {/* Decorative chip/circuit SVG */}
+        <svg className="absolute right-4 bottom-4 w-32 h-32 opacity-10" viewBox="0 0 100 100">
+          <rect x="25" y="25" width="50" height="50" rx="4" fill="none" stroke="white" strokeWidth="2"/>
+          <rect x="35" y="35" width="30" height="30" rx="2" fill="white" opacity="0.3"/>
+          <line x1="25" y1="40" x2="10" y2="40" stroke="white" strokeWidth="2"/>
+          <line x1="25" y1="50" x2="10" y2="50" stroke="white" strokeWidth="2"/>
+          <line x1="25" y1="60" x2="10" y2="60" stroke="white" strokeWidth="2"/>
+          <line x1="75" y1="40" x2="90" y2="40" stroke="white" strokeWidth="2"/>
+          <line x1="75" y1="50" x2="90" y2="50" stroke="white" strokeWidth="2"/>
+          <line x1="75" y1="60" x2="90" y2="60" stroke="white" strokeWidth="2"/>
+          <line x1="40" y1="25" x2="40" y2="10" stroke="white" strokeWidth="2"/>
+          <line x1="50" y1="25" x2="50" y2="10" stroke="white" strokeWidth="2"/>
+          <line x1="60" y1="25" x2="60" y2="10" stroke="white" strokeWidth="2"/>
+          <line x1="40" y1="75" x2="40" y2="90" stroke="white" strokeWidth="2"/>
+          <line x1="50" y1="75" x2="50" y2="90" stroke="white" strokeWidth="2"/>
+          <line x1="60" y1="75" x2="60" y2="90" stroke="white" strokeWidth="2"/>
+          <circle cx="10" cy="40" r="2" fill="white"/>
+          <circle cx="10" cy="50" r="2" fill="white"/>
+          <circle cx="10" cy="60" r="2" fill="white"/>
+          <circle cx="90" cy="40" r="2" fill="white"/>
+          <circle cx="90" cy="50" r="2" fill="white"/>
+          <circle cx="90" cy="60" r="2" fill="white"/>
+        </svg>
       </div>
 
       {/* Stats cards */}
@@ -38,6 +64,27 @@ export default function Dashboard() {
         <StatCard label="In Progress" value={inProgressCount} sub="currently studying" color="bg-sky-50 border-sky-200" icon="📖" />
         <StatCard label="Companies" value={companies.length} sub={`${activeCompanies} interviewing`} color="bg-amber-50 border-amber-200" icon="🏢" />
         <StatCard label="Checklist" value={`${checklistPercent}%`} sub={`${checklistDone}/${checklistTotal} done`} color="bg-emerald-50 border-emerald-200" icon="✅" />
+      </div>
+
+      {/* Featured Lessons */}
+      <div className="bg-white rounded-xl border border-gray-200 p-6">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg font-semibold text-gray-900">Study Guides</h2>
+          <Link href="/lessons" className="text-sm text-violet-600 hover:text-violet-700 font-medium">
+            View all {LESSONS.length} lessons →
+          </Link>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {LESSONS.slice(0, 4).map((lesson) => (
+            <Link key={lesson.slug} href={`/lessons/${lesson.slug}`} className="group">
+              <div className={`rounded-lg p-4 bg-gradient-to-br ${lesson.gradientFrom} ${lesson.gradientTo} text-white hover:shadow-lg transition-all duration-300 hover:scale-105`}>
+                <span className="text-2xl">{lesson.icon}</span>
+                <p className="font-medium text-sm mt-2">{lesson.category}</p>
+                <p className="text-xs opacity-80">{lesson.sections.length} sections · {lesson.estimatedMinutes}m</p>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
 
       {/* Two-column layout */}
@@ -79,8 +126,14 @@ export default function Dashboard() {
           <div className="bg-white rounded-xl border border-gray-200 p-6">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
             <div className="space-y-2">
+              <Link href="/lessons" className="flex items-center gap-3 p-3 rounded-lg bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition font-medium text-sm">
+                <span>📚</span> Study Lessons
+              </Link>
               <Link href="/questions" className="flex items-center gap-3 p-3 rounded-lg bg-violet-50 text-violet-700 hover:bg-violet-100 transition font-medium text-sm">
-                <span>🧠</span> Add Practice Question
+                <span>🧠</span> Practice Questions
+              </Link>
+              <Link href="/career" className="flex items-center gap-3 p-3 rounded-lg bg-teal-50 text-teal-700 hover:bg-teal-100 transition font-medium text-sm">
+                <span>🗺️</span> Career Roadmap
               </Link>
               <Link href="/companies" className="flex items-center gap-3 p-3 rounded-lg bg-amber-50 text-amber-700 hover:bg-amber-100 transition font-medium text-sm">
                 <span>🏢</span> Research a Company
